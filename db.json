@@ -1,0 +1,26 @@
+{
+  "calcomponents": [
+    {
+      "id": 1,
+      "title": "dates",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "birthdays",
+      "author": "typicode"
+    },
+    {
+      "title": "excercising",
+      "id": 4
+    },
+    {
+      "title": "friends",
+      "id": 5
+    },
+    {
+      "title": "cooking",
+      "id": 6
+    }
+  ]
+}
