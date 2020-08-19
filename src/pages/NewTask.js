@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { postTodo } from "../api/todocategories";
+import { postTodocategories } from "../api/todocategories";
 
 function NewTask() {
   const [title, setTitle] = useState("");
@@ -16,7 +16,7 @@ function NewTask() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    await postTodo({
+    await postTodocategories({
       title,
       author,
     });
@@ -35,7 +35,11 @@ function NewTask() {
           Author:
           <input value={author} onChange={handleAuthorChange} />
         </label>
-        <input type="submit" value="Add task" />
+        <input
+          type="submit"
+          value="Add new task"
+          disabled={!title || !author}
+        />
       </form>
       <Link to="/">TASKS</Link>
     </>

@@ -8,8 +8,8 @@ export const getTodocategories = async () => {
   return result;
 };
 
-export const postTodo = async (todocategory) => {
-  const response = await fetch("http://localhost:3333/todocategories", {
+export const postTodocategories = async (todocategory) => {
+  const response = await fetch("http://localhost:3332/todocategories", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
