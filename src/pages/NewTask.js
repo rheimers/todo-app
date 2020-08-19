@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { postTodo } from "../api/todocategories";
 
 function NewTask() {
   const [title, setTitle] = useState("");
@@ -13,9 +14,14 @@ function NewTask() {
     setAuthor(event.target.value);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    alert("Submitted" + title + " " + author);
+    await postTodo({
+      title,
+      author,
+    });
+    setTitle("");
+    setAuthor("");
   }
 
   return (
