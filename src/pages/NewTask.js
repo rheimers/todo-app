@@ -24,6 +24,7 @@ function NewTask() {
     const todocategory = {
       title,
       author,
+      createAt: Date.now(),
     };
     try {
       await postTodocategories(todocategory);
@@ -51,8 +52,9 @@ function NewTask() {
         <input
           type="submit"
           value="Add new task"
-          disabled={!title || !author}
+          disabled={!title || !author || loading}
         />
+        {error && <p>ERROR</p>}
       </form>
       <Link to="/">TASKS</Link>
     </>
