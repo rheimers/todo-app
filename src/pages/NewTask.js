@@ -5,6 +5,8 @@ import { postTodocategories } from "../api/todocategories";
 function NewTask() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   function handleTitleChange(event) {
     setTitle(event.target.value);
@@ -16,12 +18,23 @@ function NewTask() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    await postTodocategories({
+    setLoading(true);
+    setError(false);
+
+    const todocategory = {
       title,
       author,
-    });
-    setTitle("");
-    setAuthor("");
+    };
+    try {
+      await postTodocategories(todocategory);
+      setTitle("");
+      setAuthor("");
+    } catch (error) {
+      console.error(error);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
