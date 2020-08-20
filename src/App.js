@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-import { getTodocategories } from "./api/todocategories";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NewTask from "./pages/NewTask";
+import Home from "./pages/Home";
 
 function App() {
-  const [todocategories, setTodocategories] = useState(null);
-
-  useEffect(() => {
-    const doFetch = async () => {
-      const todocategories = await getTodocategories();
-      setTodocategories(todocategories);
-    };
-    doFetch();
-  }, []);
-
   return (
-    <div className="App">
-      {todocategories?.map((todo) => (
-        <div key={todo.id}>{todo.title}</div>
-      ))}
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/add">
+          <NewTask />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
+
 export default App;
